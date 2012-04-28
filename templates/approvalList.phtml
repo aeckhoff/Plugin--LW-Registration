@@ -1,0 +1,53 @@
+<script type="text/javascript" language="javascript">
+$(document).ready(function() {
+        
+    oTable = $('#approvalTable').dataTable({
+        "bJQueryUI": true, 
+        "sPaginationType": "full_numbers", 
+        "aoColumns": [ null, null, null, null, { "bSortable": false } ],
+        "bStateSave": true 
+    });
+});
+</script>
+<style>
+    table#approvalTable {
+        width:100%;
+    }   
+</style>
+<div class="lwrApprovalList">
+    <h4>Approval List</h4>
+    <?php if (is_array($this->list) && count($this->list)>0):?>
+    <table id="approvalTable">
+
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Registrationdate</th>
+                <th>confirmed</th>
+                <th>action</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <?php foreach($this->list as $entry): ?>
+            <tr>
+                <td><?php echo $entry['id']; ?></td>
+                <td><?php echo $entry['name']; ?></td>
+                <td><?php echo $this->formatDate($entry['lw_first_date']); ?></td>
+                <td><?php if (!$entry['hash']): ?>x<?php else: ?>o<?php endif; ?></td>
+                <td>
+                    <a href="<?php echo lw_page::getInstance()->getUrl(array("cmd"=>"delete","id"=>$entry['id'])); ?>" onClick="return confirm('really delete this entry?');">delete</a>
+                    <?php if(!$entry['hash']): ?>
+                    <a href="<?php echo lw_page::getInstance()->getUrl(array("cmd"=>"approve","id"=>$entry['id'])); ?>" onClick="return confirm('really approve this entry?');">approve</a>
+                    <?php endif; ?>
+                </td>
+            </tr>
+            <?php endforeach; ?>
+        </tbody>
+
+    </table>
+    <?php else: ?>
+    <div>No Entries available at the moment!</div>
+    <?php endif; ?>
+</div>

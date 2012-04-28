@@ -1,0 +1,25 @@
+<h2>Registration</h2>
+<!-- lw:if error -->
+<div>
+    <h3>ERROR</h3>
+</div>
+<!-- lw:endif error -->
+<form action ="<!-- lw:var action -->" method="POST">
+    <div>
+        E-Mail Adresse:<br/>
+        <input type="text" name="email" value="<!-- lw:var email -->" />
+        <!-- lw:if error1 --><div>Bitte eine g&uuml;ltige E-Mailadresse eingeben.</div><!-- lw:endif error1 -->
+        <!-- lw:if error2 --><div>Es gibt bereits einen Benutzer mit dieser E-Mailadresse.</div><!-- lw:endif error2 -->
+    </div>
+    <div>
+        Passwort:<br/>
+        <input type="password" name="pw1" />
+        <!-- lw:if error3 --><div>Bitte mindestens 5 Zeichen f&uuml;r das Passwort verwenden.</div><!-- lw:endif error3 -->
+        <!-- lw:if error4 --><div>Das Passwort und die Passwort Wiederholung stimmen nicht &uuml;berein.</div><!-- lw:endif error4 -->
+    </div>
+    <div>
+        Passwort WDHL:<br/>
+        <input type="password" name="pw2" />
+    </div>
+    <input type="submit" value="registrieren"/>
+</form>

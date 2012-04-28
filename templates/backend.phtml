@@ -1,0 +1,45 @@
+<form action="<?php echo $this->actionurl; ?>" method="post">
+    <fieldset class="lwadminform">
+        <legend class="lwadminform">Administration</legend>
+        
+        <label for="name" class="lwadminform">Intranet:</label>
+        <div class="commentbox">
+            <div style="margin-left:8px">
+                <select name="intranet_id">
+                    <option value="">please choose&nbsp;&nbsp;</option>
+                    <?php echo $this->intranetOptions; ?>
+                </select>
+            </div>
+        </div>
+        <br />		
+
+        <label for="name" class="lwadminform">From Address:</label>
+        <div class="commentbox">
+            <div style="margin-left:8px">
+                <input type="" name="from_address" value="<?php echo $this->data['from_address']; ?>" />
+            </div>
+        </div>
+        <br />		
+
+        <label for="name" class="lwadminform">Debug:</label>
+        <div class="commentbox">
+            <div style="margin-left:8px">
+                <input type="checkbox" name="debug" value="1"<?php if ($this->data['debug']==1): ?>checked="checked"<?php endif; ?>/>
+            </div>
+        </div>
+        <br />		
+
+        <label for="name" class="lwadminform">Adminansicht:</label>
+        <div class="commentbox">
+            <div style="margin-left:8px">
+                <input type="checkbox" name="admin" value="1"<?php if ($this->data['admin']==1): ?>checked="checked"<?php endif; ?>/>
+            </div>
+        </div>
+        <br />		
+
+        <p>
+            <input class="formbutton" type="submit" value="&raquo; speichern" id="speichern">
+            <input class="formbutton" type="button" value="&raquo; abbrechen" id="abbrechen" onClick="document.location.href='<?php echo $this->backurl; ?>';">
+        </p>
+    </fieldset>
+</form>

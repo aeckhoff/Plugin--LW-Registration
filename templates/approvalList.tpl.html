@@ -1,0 +1,54 @@
+<script type="text/javascript" language="javascript">
+$(document).ready(function() {
+        
+    oTable = $('#approvalTable').dataTable({
+        "bJQueryUI": true, 
+        "sPaginationType": "full_numbers", 
+        "aoColumns": [ null, null, null, null, { "bSortable": false } ],
+        "bStateSave": true 
+    });
+});
+</script>
+<style>
+    table#approvalTable {
+        width:100%;
+    }   
+</style>
+<div class="lwrApprovalList">
+    <h4>Approval List</h4>
+    <!-- lw:if entries -->
+    <table id="approvalTable">
+
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Registrationdate</th>
+                <th>confirmed</th>
+                <th>action</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <!-- lw:blockstart entries -->
+            <tr>
+                <td><!-- lw:var id --></td>
+                <td><!-- lw:var name --></td>
+                <td><!-- lw:var firstdate --></td>
+                <td><!-- lw:if nohash -->x<!-- lw:endif nohash --><!-- lw:ifnot nohash -->o<!-- lw:endifnot nohash --></td>
+                <td>
+                    <a href="<!-- lw:var deleteurl -->" onClick="return confirm('really delete this entry?');">delete</a>
+                    <!-- lw:if nohash -->
+                    <a href="<!-- lw:var approveurl -->" onClick="return confirm('really approve this entry?');">approve</a>
+                    <!-- lw:endif nohash -->
+                </td>
+            </tr>
+            <!-- lw:blockend entries -->
+        </tbody>
+
+    </table>
+    <!-- lw:endif entries -->
+    <!-- lw:if noentries -->
+    <div>No Entries available at the moment!</div>
+    <!-- lw:endif noentries -->
+</div>
